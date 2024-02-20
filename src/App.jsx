@@ -11,6 +11,8 @@ function App() {
     duration: 10
   });
 
+  const inpurIsValid = userInput.duration >= 1;
+
   function handleChange(inputIdentifier, newValue) {
     setUserInput(prevUserInput => {
           return {
@@ -25,7 +27,8 @@ function App() {
        <Header />
        <UserInput userInput={userInput} onChange={handleChange} />
        {/* Results go here */}
-       <Results input={userInput} />
+       {!inpurIsValid && (<p className='center'>Please enter a duration greater than zero.</p>)}
+       {inpurIsValid && <Results input={userInput} />}
 
     </>
    
